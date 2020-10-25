@@ -52,7 +52,6 @@ char shiftKey(){
     // introduce explanatory variable
     char CipherChar=(char)0;
     
-    // shift
     if(Character.isLowerCase(originalChar)){
         CipherChar=(char)(originalChar+keys);
         if(CipherChar>'z'){
