@@ -39,10 +39,7 @@ To answer the question "What is good code", we should backup and ask "What do cu
 ## SecretMEMO Refactoring
 
 #### Problem
-You have a temporary variable(CipherChar) that’s assigned the result of a simple expression and you place the result of an expression in a local variable for later use in your code.
-
-#### Solution
-You can implement 2 techniques to solve this problem. Which are [inline temp](https://refactoring.guru/inline-temp) and [replace temp with Query](https://refactoring.guru/replace-temp-with-query).
+This is an example of duplicate code(one of the sign for refactoring). You have a temporary variable(CipherChar) that’s assigned the result of a simple expression and you place the result of an expression in a local variable for later use in your code.
 
 #### Before refactor
 
@@ -67,6 +64,9 @@ char shiftKey(){
 }
 ```
 
+#### Solution
+You can implement 2 techniques to solve this problem. Which are [inline temp](https://refactoring.guru/inline-temp) and [replace temp with Query](https://refactoring.guru/replace-temp-with-query).
+
 #### After refactor
 
 ```
@@ -75,13 +75,46 @@ char shiftKey(){
 
 #### Problem
 
-You have a code to check file status that can be grouped together.
+Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as Long method(one of the sign for refactoring).
+
+#### Before refactor
+
+```
+   /**
+     * read a new .txt file which contain cipher text
+     * @param source source file to read and decrypt
+     * @param key key for decryption
+     * @return boolean true if read file successful and return false if not
+     */
+    public String readFile(String source, String key, String strategy) throws Exception{
+        // check file status
+        File fs = new File(source);
+        if(!fs.exists()||!fs.isFile()) {error("File is not a regular file"); return null;}
+        if(!fs.canRead()) {error("File is unreadable"); return null;}
+        // File decryption
+        StringBuilder text = new StringBuilder();
+        if(isValid(key, strategy)) {
+            try {
+                Cipher dec = new AlphabetShiftCipher();
+                if (strategy.equals("s2")) dec = new UnicodeCipher();
+                if (strategy.equals("s3")) dec = new KeyWordCipher();
+                if(strategy.equals("s4")) dec = new AES();
+                Scanner in = new Scanner(fs);
+                String line;
+                while (in.hasNext()) {
+                    line = in.nextLine();
+                    text.append(dec.decrypt(line, key));
+                }
+            } catch (IOException ioe) { error(ioe.getMessage());return null; }
+
+        }
+        return text.toString();
+    }
+```
 
 #### Solution 
 
 You can implement technique calles [Extract method](https://refactoring.guru/extract-method) and throw exception instead of return null.
-
-#### Before refactor
 
 ```
 readFile(String source) throws Exception{
