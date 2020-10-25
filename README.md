@@ -42,9 +42,9 @@ To answer the question "What is good code", we should backup and ask "What do cu
 You have a temporary variable(CipherChar) that’s assigned the result of a simple expression and you place the result of an expression in a local variable for later use in your code.
 
 #### Solution
-You can implement 2 techniques to solve this problem. Which are inline temp and replace temp with Query.
+You can implement 2 techniques to solve this problem. Which are [inline temp](https://refactoring.guru/inline-temp) and [replace temp with Query](https://refactoring.guru/replace-temp-with-query).
 
-#### original code
+#### Before refactor
 
 ```
 char shiftKey(){
@@ -66,6 +66,12 @@ char shiftKey(){
         }
     }
 }
+```
+
+#### After refactor
+
+```
+
 ```
 
 
