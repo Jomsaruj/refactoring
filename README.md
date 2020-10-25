@@ -75,7 +75,7 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 
 #### Problem
 
-Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as **Long method**.
+Since method "readfile" is doing more than one thing, which are check source file status, get decryption stategy and read text from file. Therefore, "readfile" method is classified as **Long method**.
 
 #### Before refactor
 
@@ -116,23 +116,66 @@ Since method "readfile" is doing more than one thing, which are check source fil
 
 #### Solution 
 
-You can implement technique calles [Extract method](https://refactoring.guru/extract-method) and throw exception instead of return null.
+You can implement technique calles [Extract method](https://refactoring.guru/extract-method).
+
+**You can extract code that check source file status and get decryption stategy into seperate method**
 
 ```
-readFile(String source) throws Exception{
-
-    // check file status
-    File fs = new File(source);
-
-    if(!fs.exists()||!fs.isFile()) {
-        error("File is not a regular file"); return null;
-     }
-
-    if(!fs.canRead()) {
-        error("File is unreadable"); return null;
-    }   
-} 
+    private File checkFileStatus(String source) {
+        File fs = new File(source);
+        if(!fs.exists()||!fs.isFile()) {error("File is not a regular file");
+            return null;
+        }
+        if(!fs.canRead()) {error("File is unreadable");
+            return null;
+        }
+        return fs;
+    }
 ```
+
+```
+    private Cipher getCipher(String strategy) {
+        Cipher dec;
+        if (strategy.equals("s1")) dec = new AlphabetShiftCipher();
+        if (strategy.equals("s2")) dec = new UnicodeCipher();
+        if (strategy.equals("s3")) dec = new KeyWordCipher();
+        if(strategy.equals("s4")) dec = new AES();
+        return dec;
+    }
+```
+
+#### After refactor
+
+```
+    /**
+     * read a new .txt file which contain cipher text
+     * @param source source file to read and decrypt
+     * @param key key for decryption
+     * @return boolean true if read file successful and return false if not
+     */
+    public String readFile(String source, String key, String strategy) throws Exception{
+        // check file status
+        File fs = checkFileStatus(source);
+        if (fs == null) return null;
+        // File decryption
+        StringBuilder text = new StringBuilder();
+        if(isValid(key, strategy)) {
+            try {
+                Cipher dec = getCipher(strategy);
+                Scanner in = new Scanner(fs);
+                String line;
+                while (in.hasNext()) {
+                    line = in.nextLine();
+                    text.append(dec.decrypt(line, key));
+                }
+            } catch (IOException ioe) { error(ioe.getMessage());return null; }
+
+        }
+        return text.toString();
+    }
+```
+
+
 
 ## Resources
 
