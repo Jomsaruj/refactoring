@@ -1,4 +1,4 @@
 ## Table of Contents
-* [Introduction](#refactoring-documentation)
+* [Refactoring Documentation](#refactoring-documentation)
 
-## Refactoring documentation
+## Refactoring Documentation
