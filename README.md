@@ -81,6 +81,8 @@ You have a code to check file status that can be grouped together.
 
 You can implement technique calles [Extract method](https://refactoring.guru/extract-method) and throw exception instead of return null.
 
+#### Before refactor
+
 ```
 readFile(String source) throws Exception{
 
