@@ -48,8 +48,10 @@ You can implement 2 techniques to solve this problem. Which are inline temp and 
 
 ```
 char shiftKey(){
+
     // introduce explanatory variable
     char CipherChar=(char)0;
+    
     // shift
     if(Character.isLowerCase(originalChar)){
         CipherChar=(char)(originalChar+keys);
@@ -57,6 +59,7 @@ char shiftKey(){
             CipherChar=(char)('a'+((CipherChar-1)-'z'));
         }
     }
+    
     else if(Character.isUpperCase(originalChar)){
         CipherChar=(char)(originalChar+keys);
         if(CipherChar>'Z'){
