@@ -1,1 +1,1 @@
-# refactoring
+# Refactoring documentation for SecretMEMO application
