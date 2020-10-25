@@ -9,5 +9,10 @@ This project is a part of [Individual Software Process 01219245](https://cpske.g
 
 #### What is refactoring
 
-Refactoring is the process to modifying the existing code, without changing the external functionality.
+Refactoring is the process to modify the existing code, without changing the external functionality.
+
+#### Why refactoring
+
+* Code is changed during development process.
+* Improve the code, because your first version of code is not always the best.
 
