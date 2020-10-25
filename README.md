@@ -84,16 +84,17 @@ You can implement technique calles [Extract method](https://refactoring.guru/ext
 ```
 readFile(String source) throws Exception{
 
-        // check file status
-        File fs = new File(source);
-        
-        if(!fs.exists()||!fs.isFile()) {
-            error("File is not a regular file"); return null;
-         }
-         
-        if(!fs.canRead()) {
-            error("File is unreadable"); return null;
-        }    
+    // check file status
+    File fs = new File(source);
+
+    if(!fs.exists()||!fs.isFile()) {
+        error("File is not a regular file"); return null;
+     }
+
+    if(!fs.canRead()) {
+        error("File is unreadable"); return null;
+    }   
+} 
 ```
 
 
