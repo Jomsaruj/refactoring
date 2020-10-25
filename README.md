@@ -46,21 +46,21 @@ This is an example of **duplicate code**. You have a temporary variable(CipherCh
 #### Before refactor
 
 ```
-char CipherChar=(char)0;
+    char CipherChar=(char)0;
 
-if(Character.isLowerCase(originalChar)){
-    CipherChar=(char)(originalChar+keys);
-    if(CipherChar>'z'){
-        CipherChar=(char)('a'+((CipherChar-1)-'z'));
+    if(Character.isLowerCase(originalChar)){
+        CipherChar=(char)(originalChar+keys);
+        if(CipherChar>'z'){
+            CipherChar=(char)('a'+((CipherChar-1)-'z'));
+        }
     }
-}
 
-else if(Character.isUpperCase(originalChar)){
-    CipherChar=(char)(originalChar+keys);
-    if(CipherChar>'Z'){
-        CipherChar=(char)('A'+((CipherChar-1)-'Z'));
+    else if(Character.isUpperCase(originalChar)){
+        CipherChar=(char)(originalChar+keys);
+        if(CipherChar>'Z'){
+            CipherChar=(char)('A'+((CipherChar-1)-'Z'));
+        }
     }
-}
 ```
 
 #### Solution
@@ -69,24 +69,24 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 #### After refactor
 
 ```
-char getCipherChar(char originalChar, int keys) {
-    return (char)originalChar + keys;
-}
-
-char cipherChar = getCipherChar(originalChar, keys);
-
-if(Character.isLowerCase(originalChar)){
-    if(cipherChar>'z'){
-        cipherChar=(char)('a'+((cipherChar-1)-'z'));
+    char getCipherChar(char originalChar, int keys) {
+        return (char)originalChar + keys;
     }
-}
 
-else if(Character.isUpperCase(originalChar)){
-    if(cipherChar>'Z'){
-        cipherChar=(char)('A'+((cipherChar-1)-'Z'));
+    char cipherChar = getCipherChar(originalChar, keys);
+
+    if(Character.isLowerCase(originalChar)){
+        if(cipherChar>'z'){
+            cipherChar=(char)('a'+((cipherChar-1)-'z'));
+        }
     }
-}
-return cipherChar;
+
+    else if(Character.isUpperCase(originalChar)){
+        if(cipherChar>'Z'){
+            cipherChar=(char)('A'+((cipherChar-1)-'Z'));
+        }
+    }
+    return cipherChar;
 ```
 
 ### Long method
@@ -202,6 +202,56 @@ You can extract code that check source file status and get decryption stategy in
         return text.toString();
     }
 ```
+
+### Feature Envy
+
+#### Problem
+
+Method "error" uses members of another class more than the members of it’s own class.
+
+#### Before refactor
+
+```
+    /**
+     * display an error message.
+     * @param message the error text to display
+     */
+    public void error(String message) { 
+        showDialog(message); 
+    }
+    
+     /**
+     * Give user some advise or some warning on the dialog box
+     * @param message to show on the dialog box.
+     */
+    public void showDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Notification");
+        alert.setHeaderText( message );
+        // wait for user to dismiss dialog
+        alert.showAndWait();
+```
+
+#### Solution 
+
+You can combine those 2 method together.
+
+```
+    /**
+     * display an error message.
+     * @param message the error text to display
+     */
+    public void error(String message) { 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Notification");
+        alert.setHeaderText( message );
+        // wait for user to dismiss dialog
+        alert.showAndWait(); 
+    } 
+```
+
+
+
 
 ## Resources
 
