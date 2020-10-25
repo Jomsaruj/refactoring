@@ -46,22 +46,19 @@ This is an example of **duplicate code**. You have a temporary variable(CipherCh
 #### Before refactor
 
 ```
-char shiftKey(){
+char CipherChar=(char)0;
 
-    char CipherChar=(char)0;
-    
-    if(Character.isLowerCase(originalChar)){
-        CipherChar=(char)(originalChar+keys);
-        if(CipherChar>'z'){
-            CipherChar=(char)('a'+((CipherChar-1)-'z'));
-        }
+if(Character.isLowerCase(originalChar)){
+    CipherChar=(char)(originalChar+keys);
+    if(CipherChar>'z'){
+        CipherChar=(char)('a'+((CipherChar-1)-'z'));
     }
-    
-    else if(Character.isUpperCase(originalChar)){
-        CipherChar=(char)(originalChar+keys);
-        if(CipherChar>'Z'){
-            CipherChar=(char)('A'+((CipherChar-1)-'Z'));
-        }
+}
+
+else if(Character.isUpperCase(originalChar)){
+    CipherChar=(char)(originalChar+keys);
+    if(CipherChar>'Z'){
+        CipherChar=(char)('A'+((CipherChar-1)-'Z'));
     }
 }
 ```
@@ -72,27 +69,24 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 #### After refactor
 
 ```
-char shiftKey(){
-
-    char cipherChar = getCipherChar(originalChar, keys);
-
-    if(Character.isLowerCase(originalChar)){
-        if(cipherChar>'z'){
-            cipherChar=(char)('a'+((cipherChar-1)-'z'));
-        }
-    }
-    else if(Character.isUpperCase(originalChar)){
-        if(cipherChar>'Z'){
-            cipherChar=(char)('A'+((cipherChar-1)-'Z'));
-        }
-    }
-    return cipherChar;
-}
-
 char getCipherChar(char originalChar, int keys) {
     return (char)originalChar + keys;
 }
 
+char cipherChar = getCipherChar(originalChar, keys);
+
+if(Character.isLowerCase(originalChar)){
+    if(cipherChar>'z'){
+        cipherChar=(char)('a'+((cipherChar-1)-'z'));
+    }
+}
+
+else if(Character.isUpperCase(originalChar)){
+    if(cipherChar>'Z'){
+        cipherChar=(char)('A'+((cipherChar-1)-'Z'));
+    }
+}
+return cipherChar;
 ```
 
 ### Long method
@@ -208,8 +202,6 @@ You can extract code that check source file status and get decryption stategy in
         return text.toString();
     }
 ```
-
-
 
 ## Resources
 
