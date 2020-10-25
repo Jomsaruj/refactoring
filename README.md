@@ -1,4 +1,4 @@
-This project provide information about refactoring and demonstrates how to refactor [SecretMEMO](https://github.com/Jomsaruj/PA4-SecretMEMO) application, using refactoring techniques that are not covered in class.
+This project provide information about refactoring and demonstrates how to refactor [SecretMEMO](https://github.com/Jomsaruj/PA4-SecretMEMO) application, using refactoring techniques.
 
 This project is a part of [Individual Software Process 01219245](https://cpske.github.io/ISP/) course at at [Kasetsart University](https://ku.ac.th/th). 
 
@@ -73,6 +73,30 @@ char shiftKey(){
 ```
 
 ```
+
+#### Problem
+
+You have a code to check file status that can be grouped together.
+
+#### Solution 
+
+You can implement technique calles [Extract method](https://refactoring.guru/extract-method)
+
+```
+readFile(String source) throws Exception{
+
+        // check file status
+        File fs = new File(source);
+        
+        if(!fs.exists()||!fs.isFile()) {
+            error("File is not a regular file"); return null;
+         }
+         
+        if(!fs.canRead()) {
+            error("File is unreadable"); return null;
+        }    
+```
+
 
 
 
