@@ -4,6 +4,7 @@ This project is a part of [Individual Software Process 01219245](https://cpske.g
 
 ## Table of Contents
 * [Refactoring Documentation](#refactoring-documentation)
+* [SecretMEMO Refactoring](#secretmemo-refactoring)
 
 ## Refactoring Documentation
 
@@ -34,6 +35,8 @@ To answer the question "What is good code", we should backup and ask "What do cu
 * Does what user wants - easy to modify, changed according to feedback
 * Efficient - avoid duplicate function, use caching
 * No errors or defects - unit testing, CI
+
+## SecretMEMO Refactoring
 
 
 
