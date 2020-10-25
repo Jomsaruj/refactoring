@@ -118,9 +118,14 @@ Since method "readfile" is doing more than one thing, which are check source fil
 
 You can implement technique calles [Extract method](https://refactoring.guru/extract-method).
 
-**You can extract code that check source file status and get decryption stategy into seperate method**
+You can extract code that check source file status and get decryption stategy into seperate method
 
 ```
+    /**
+     * check source file status
+     * @param source source file to read
+     * @return null if file is invalid
+     */
     private File checkFileStatus(String source) {
         File fs = new File(source);
         if(!fs.exists()||!fs.isFile()) {error("File is not a regular file");
@@ -134,6 +139,11 @@ You can implement technique calles [Extract method](https://refactoring.guru/ext
 ```
 
 ```
+    /**
+     * get decryption strategy
+     * @param strategy strategy to decrypt cipher text
+     * @return selected decryption strategy
+     */
     private Cipher getCipher(String strategy) {
         Cipher dec;
         if (strategy.equals("s1")) dec = new AlphabetShiftCipher();
