@@ -28,7 +28,7 @@ Signs that code needs refactoring sometime called "code smells". Here is some ex
 
 #### Where is the refactoring goal
 
-To answer the question "What is good code", we should backup and ask "What do customers(stakeholders) want". Here is some example of good code.
+To answer the question "What is good code", we should backup and ask "What do customers(stakeholders) want". Here is some examples of good code.
 
 * Easy to use - not too complex and understandable
 * Does what user wants - easy to modify, changed according to feedback
