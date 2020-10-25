@@ -38,8 +38,10 @@ To answer the question "What is good code", we should backup and ask "What do cu
 
 ## SecretMEMO Refactoring
 
+### duplicate code
+
 #### Problem
-This is an example of duplicate code(one of the sign for refactoring). You have a temporary variable(CipherChar) that’s assigned the result of a simple expression.
+This is an example of **duplicate code**. You have a temporary variable(CipherChar) that’s assigned the result of a simple expression.
 
 #### Before refactor
 
@@ -72,6 +74,8 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 ```
 
 ```
+
+### Long method
 
 #### Problem
 
