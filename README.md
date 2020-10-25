@@ -38,5 +38,33 @@ To answer the question "What is good code", we should backup and ask "What do cu
 
 ## SecretMEMO Refactoring
 
+#### Problem
+You have a temporary variable(CipherChar) that’s assigned the result of a simple expression and you place the result of an expression in a local variable for later use in your code.
+
+#### Solution
+You can implement 2 techniques to solve this problem. Which are inline temp and replace temp with Query.
+
+#### original code
+
+```
+char shiftKey(){
+    // introduce explanatory variable
+    char CipherChar=(char)0;
+    // shift
+    if(Character.isLowerCase(originalChar)){
+        CipherChar=(char)(originalChar+keys);
+        if(CipherChar>'z'){
+            CipherChar=(char)('a'+((CipherChar-1)-'z'));
+        }
+    }
+    else if(Character.isUpperCase(originalChar)){
+        CipherChar=(char)(originalChar+keys);
+        if(CipherChar>'Z'){
+            CipherChar=(char)('A'+((CipherChar-1)-'Z'));
+        }
+    }
+}
+```
+
 
 
