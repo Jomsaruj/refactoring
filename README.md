@@ -5,7 +5,9 @@ This project is a part of [Individual Software Process 01219245](https://cpske.g
 ## Table of Contents
 * [Refactoring Documentation](#refactoring-documentation)
 * [SecretMEMO Refactoring](#secretmemo-refactoring)
-* [1](#duplicate-code)
+* [Example of duplicate code](#duplicate-code)
+* [Example of Long method](#long-method)
+* [Example of Feature Envy](#feature-envy)
 
 ## Refactoring Documentation
 
