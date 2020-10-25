@@ -75,7 +75,7 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 
 #### Problem
 
-Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as **Long method**(one of the sign for refactoring).
+Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as **Long method**.
 
 #### Before refactor
 
