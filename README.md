@@ -75,7 +75,7 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 
 #### Problem
 
-Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as Long method(one of the sign for refactoring).
+Since method "readfile" is doing more than one thing, which are check source file status, decrypt the message and read text from file. Therefore, "readfile" method is classified as **Long method**(one of the sign for refactoring).
 
 #### Before refactor
 
@@ -87,10 +87,12 @@ Since method "readfile" is doing more than one thing, which are check source fil
      * @return boolean true if read file successful and return false if not
      */
     public String readFile(String source, String key, String strategy) throws Exception{
+    
         // check file status
         File fs = new File(source);
         if(!fs.exists()||!fs.isFile()) {error("File is not a regular file"); return null;}
         if(!fs.canRead()) {error("File is unreadable"); return null;}
+        
         // File decryption
         StringBuilder text = new StringBuilder();
         if(isValid(key, strategy)) {
