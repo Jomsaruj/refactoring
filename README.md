@@ -39,7 +39,7 @@ To answer the question "What is good code", we should backup and ask "What do cu
 ## SecretMEMO Refactoring
 
 #### Problem
-This is an example of duplicate code(one of the sign for refactoring). You have a temporary variable(CipherChar) that’s assigned the result of a simple expression and you place the result of an expression in a local variable for later use in your code.
+This is an example of duplicate code(one of the sign for refactoring). You have a temporary variable(CipherChar) that’s assigned the result of a simple expression.
 
 #### Before refactor
 
