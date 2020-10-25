@@ -16,7 +16,7 @@ Refactoring is the process of modifying the existing code to improve it, without
 * Code is changed during development process.
 * Improve the code, because your first version is not always the best.
 
-### When to refactoring
+#### When to refactoring
 
 Signs that code needs refactoring sometime called "code smells". Here is some example of code smells.
 
