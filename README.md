@@ -99,6 +99,11 @@ readFile(String source) throws Exception{
 } 
 ```
 
+## Resources
+
+* [Refactoring Guru](https://refactoring.guru/refactoring)
+* [Refactoring cpske site](https://cpske.github.io/ISP/assignment/week10/refactoring)
+* [Intro to Refactoring](https://cpske.github.io/ISP/refactoring/Refactoring.pdf)
 
 
 
