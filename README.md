@@ -49,7 +49,6 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 ```
 char shiftKey(){
 
-    // introduce explanatory variable
     char CipherChar=(char)0;
     
     if(Character.isLowerCase(originalChar)){
