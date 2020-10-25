@@ -72,6 +72,26 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
 #### After refactor
 
 ```
+char shiftKey(){
+
+    char cipherChar = getCipherChar(originalChar, keys);
+
+    if(Character.isLowerCase(originalChar)){
+        if(cipherChar>'z'){
+            cipherChar=(char)('a'+((cipherChar-1)-'z'));
+        }
+    }
+    else if(Character.isUpperCase(originalChar)){
+        if(cipherChar>'Z'){
+            cipherChar=(char)('A'+((cipherChar-1)-'Z'));
+        }
+    }
+    return cipherChar;
+}
+
+char getCipherChar(char originalChar, int keys) {
+    return (char)originalChar + keys;
+}
 
 ```
 
