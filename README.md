@@ -86,7 +86,6 @@ You can implement 2 techniques to solve this problem. Which are [inline temp](ht
             cipherChar=(char)('A'+((cipherChar-1)-'Z'));
         }
     }
-    return cipherChar;
 ```
 
 ### Long method
